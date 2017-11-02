@@ -5,59 +5,26 @@
 	<title>Food Gifs</title>
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Hammersmith+One|Istok+Web|Shrikhand" rel="stylesheet">
 </head>
 
 <body>
 
-	<style type="text/css">
-		button,
-		div,
-		form,
-		input {
-			margin: 10px;
-		}
-
-		h1 {
-			text-align: center;
-			background-color: #A90EA6;
-			color: #FFFFFF;
-			height: 120px;
-			padding: 40px;
-			border-radius: 20px;
-		}
-		button {
-			color: #FFFFFF;
-			background-color: #A90EA6;
-			height: 40px;
-			width: 100px;
-			border-radius: 20px;
-		}
-
-		#add-food {
-			font-size: 30px;
-			color: #FFFFFF;
-			background-color: #A90EA6;
-			height: 80px;
-			width: 200px;
-			border-radius: 20px;
-		}
-
-
-	</style>
-
 	<div class="container">
 
-		<h1>Food GIF generator</h1>
+		<header>
+			<h1>Food GIF generator</h1>
 
-		<div id="buttons-view"> </div>
+			<div id="buttons-view"> </div>
 
-		<form id="food-form">
-		      <label for="food-input">Add food</label>
-		      <input type="text" id="food-input"><br>
+			<form id="food-form">
+			      <label for="food-input">Add food</label>
+			      <input type="text" id="food-input"><br>
+			      <input id="add-food" type="submit" value="Add food">
+			</form>
 
-		      <!-- Button triggers new food to be added -->
-		      <input id="add-food" type="submit" value="Add food">
-		</form>
+		</header>
 
 		<div id="images">
 		</div>
@@ -66,97 +33,7 @@
 
 
 	 	
-	 	<script type="text/javascript">
-	 	
-	 	//GLOBAL VARIABLES
-	 	//=======================================================
-	 	var topics = ["tacos", "pizza", "cheeseburger", "donut", "milkshake", "muffin", "chocolate",  "cupcake", "pie", "kale", "broccoli", "sourdough", "lasagna", "steak", "tofu"];
-
-	 	//FUNCTIONS
-	 	//=======================================================
-	 	function renderButtons() {
-	 		$("#buttons-view").empty();
-	 		for (var i = 0; i < topics.length; i++) {
-
-	 			var button = $("<button>");
-	 			button.addClass("food-button");
-	 			button.attr("data-name", topics[i]);
-	 			button.text(topics[i]);
-	 			$("#buttons-view").append(button);
-	 		}
-
-		 	$(".food-button").on("click", function() {
-
-		 		var food = $(this).attr("data-name");
-
-		 		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + food + "&api_key=NErKY2MzmExW43j4p2CVQ9b7DoexOmvH&limit=10&offset=0&rating=PG&lang=en";
-
-		 		$.ajax({
-		 			url: queryURL,
-		 			method: "GET"
-		 		}).done(function(response) {
-		 			console.log(response);
-		 			
-		 			var results = response.data;
-
-		 			for (var i = 0; i < results.length; i++) {
-		 				var rating = results[i].rating;
-		 				console.log(rating);
-		 				var foodDiv = $("<div>");
-
-		 				var p = $("<p>").text("Rating: " + rating);
-		 				
-		 				var foodImage = $("<img>");
-		 					foodImage.addClass("image");
-		 					foodImage.attr("src", results[i].images.fixed_height_still.url);
-		 					foodImage.attr("data-still", results[i].images.fixed_height_still.url);
-		 					foodImage.attr("data-animate", results[i].images.fixed_height.url);
-
-		 				foodDiv.prepend(p);
-		 				foodDiv.prepend(foodImage);
-
-		 				$("#images").prepend(foodDiv);
-
-		 				$(".image").on("click", function() {
-	 						var state = $(this).attr("data-state");
-
-					 		if (state === "still") {
-					 			$(this).attr("src", $(this).attr("data-animate"));
-					 			$(this).attr("data-state", "animate");
-					 		} else {
-					 			$(this).attr("src", $(this).attr("data-still"));
-					 			$(this).attr("data-state", "still");
-					 		}
-					 	});
-
-		 			}
-
-
-
-		 			
-		 		});
-			});
-
-	 	}
-
-	 	//PROCESSES
-	 	//=======================================================
-
-	 	$("#add-food").on("click", function(event) {
-	 		event.preventDefault();
-
-	 		var food = $("#food-input").val().trim();
-
-	 		topics.push(food);
-
-	 		renderButtons();
-
-	 		$("#food-input").val("");
-	 	});
-
-	 	renderButtons();
-	 	
-	 	</script>
+	 	<script type="text/javascript" src=assets/javascript/app.js></script>
 	
 	</div>
 

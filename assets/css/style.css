@@ -1,0 +1,48 @@
+		button,
+		div,
+		form,
+		input {
+			margin: 10px;
+		}
+
+		body {
+			background-color: #E9FAF9;
+		}
+
+
+		h1 {
+			font-family: 'Shrikhand', cursive;	
+			color: #FFFFFF;
+			font-size: 60px;
+
+		}
+
+		header {
+			text-align: center;
+			background-color: #D53737;
+			padding: 20px;
+			border-radius: 20px;
+		}
+		button {
+			font-family: 'Istok Web', sans-serif;
+			color: #FFFFFF;
+			background-color: #FC9549;
+			height: 35px;
+			width: 100px;
+			border-radius: 20px;
+		}
+
+		#add-food {
+			font-family: 'Hammersmith One', sans-serif;
+			font-size: 30px;
+			color: #FFFFFF;
+			background-color: #F7CB4D;
+			height: 80px;
+			width: 205px;
+			border-radius: 40px;
+			padding: 10px;
+		}
+
+		#images {
+			float: left;
+		}
