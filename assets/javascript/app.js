@@ -61,9 +61,6 @@ function renderButtons() {
 
 		}
 
-
-
-		 			
 		});
 });
 
@@ -71,7 +68,6 @@ function renderButtons() {
 
 //PROCESSES
 //=======================================================
-
 $("#add-food").on("click", function(event) {
 	event.preventDefault();
 

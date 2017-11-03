@@ -34,15 +34,10 @@
 
 		#add-food {
 			font-family: 'Hammersmith One', sans-serif;
-			font-size: 30px;
+			font-size: 20px;
 			color: #FFFFFF;
 			background-color: #F7CB4D;
-			height: 80px;
-			width: 205px;
+			height: 40px;
+			width: 150px;
 			border-radius: 40px;
-			padding: 10px;
-		}
-
-		#images {
-			float: left;
 		}
